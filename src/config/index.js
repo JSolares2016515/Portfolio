@@ -45,6 +45,13 @@ module.exports = {
     },
 
     footerLinks: [
-
+        {
+            name: "Linkedin",
+            url: "https://www.linkedin.com/in/francisco-solares-1b77681a1/"
+        },
+        {
+            name: "Github",
+            url: "https://github.com/JSolares2016515"
+        },
     ]
 }
