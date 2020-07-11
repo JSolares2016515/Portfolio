@@ -10,9 +10,8 @@ import ContentWrapper from "../../styles/ContentWrapper"
 
 const StyledSection = styled.section`
   width: 100%;
-  height: auto;
+  height: 100vh;
   background: ${({ theme }) => theme.colors.background};
-  margin-top: 4rem;
 `
 
 const StyledContentWrapper = styled(ContentWrapper)`
@@ -41,7 +40,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
     .image-content {
       width: 100%;
       max-width: 18rem;
-      margin-top: 4rem;
+      margin-top: 16rem;
       margin-left: 0;
       @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
         margin-left: 2rem;
@@ -64,47 +63,26 @@ const StyledContentWrapper = styled(ContentWrapper)`
 const About = ({ content }) => {
   const { frontmatter, body } = content[0].node
 
-  // Required for animating the text content
-  const tRef = useRef()
-  const tOnScreen = useOnScreen(tRef)
-  const tVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  }
-
-  // Required for animating the image
-  const iRef = useRef()
-  const iOnScreen = useOnScreen(iRef)
-  const iVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0 },
-  }
 
   return (
     <StyledSection id="about">
       <StyledContentWrapper>
-        <motion.div
+        <div
           className="inner-wrapper"
-          ref={tRef}
-          variants={tVariants}
-          animate={tOnScreen ? "visible" : "hidden"}
         >
           <h3 className="section-title">{frontmatter.title}</h3>
           <div className="text-content">
             <MDXRenderer>{body}</MDXRenderer>
           </div>
-        </motion.div>
-        <motion.div
+        </div>
+        <div
           className="image-content"
-          ref={iRef}
-          variants={iVariants}
-          animate={iOnScreen ? "visible" : "hidden"}
         >
           <Img
             className="about-author"
             fluid={frontmatter.image.childImageSharp.fluid}
           />
-        </motion.div>
+        </div>
       </StyledContentWrapper>
     </StyledSection>
   )

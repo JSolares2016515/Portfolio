@@ -71,7 +71,7 @@ const Contact = ({ content }) => {
   }
 
   return (
-    <StyledSection id="contact" ref={ref} variants={variants} animate={onScreen ? "visible" : "hidden"}>
+    <StyledSection id="contact" >
       <StyledContentWrapper>
         <h3>{frontmatter.title}</h3>
         <MDXRenderer>{body}</MDXRenderer>
